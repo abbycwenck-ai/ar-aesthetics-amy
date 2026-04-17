@@ -1088,6 +1088,10 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ── Responsive ─────────────────────────────────────────────── */
+
+/* Prevent any horizontal overflow globally */
+html, body { overflow-x: hidden; }
+
 @media (max-width: 900px) {
   .topbar__text { display: none; }
 
@@ -1105,6 +1109,8 @@ a { color: inherit; text-decoration: none; }
     gap: 48px;
   }
   .about__image-wrap { max-width: 360px; margin: 0 auto; }
+  /* Fix accent border overflow on mobile — remove negative right inset */
+  .about__image-accent { inset: 16px 16px -16px 16px; }
   .about__content { text-align: center; }
   .about__details { justify-content: center; }
   .about__content p { margin: 0 auto 18px; }
@@ -1136,15 +1142,39 @@ a { color: inherit; text-decoration: none; }
   .nav__links { display: none; }
   .nav__toggle { display: flex; }
 
-  .hero { padding: 110px 0 70px; }
+  /* Fix: mobile menu must sit above everything including topbar */
+  .nav__mobile-menu { z-index: 1002; }
+
+  /* Fix: hero top padding must clear topbar (~38px) + nav (~76px) + buffer */
+  .hero { padding: 130px 0 70px; }
   .hero__eyebrow { display: block; }
 
+  /* Smaller hero title on very small screens */
+  .hero__title { font-size: clamp(2.4rem, 9vw, 3.2rem); }
+
+  /* Services */
   .services__grid { grid-template-columns: 1fr; }
+  .service-card { padding: 28px 20px; }
 
+  /* About */
   .about__details { flex-direction: column; gap: 16px; }
+  .about__image-accent { display: none; } /* hide decorative accent on small screens */
 
-  .contact__booking-card { padding: 32px 24px; }
+  /* Location card — already hidden at 900px */
 
+  /* Contact */
+  .contact__booking-card { padding: 28px 20px; }
+  .contact__booking-card h3 { font-size: 1.6rem; }
+  .contact__item-value { font-size: 1.1rem; }
+
+  /* Buttons — slightly smaller padding on mobile */
+  .btn { padding: 12px 24px; font-size: 0.72rem; }
+
+  /* Mobile nav menu — smaller font so all links fit on screen */
+  .nav__mobile-menu a { font-size: 1.9rem; gap: 20px; }
+  .nav__mobile-menu { gap: 22px; }
+
+  /* Footer */
   .footer__top { flex-direction: column; gap: 36px; }
   .footer__social-links { margin-top: 8px; }
 }
