@@ -533,6 +533,27 @@ a { color: inherit; text-decoration: none; }
 .service-card--featured h3 { color: var(--color-mocha); }
 .service-card--featured p { color: var(--color-mocha-mid); }
 
+.service-card__pricing {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-gold-light);
+}
+
+.service-card__price {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--color-rose-gold);
+}
+
+.service-card--featured .service-card__pricing {
+  border-top-color: rgba(74,44,42,0.15);
+}
+
 .service-card__badge {
   position: absolute;
   top: 20px;
