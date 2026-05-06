@@ -485,11 +485,21 @@ a { color: inherit; text-decoration: none; }
   position: relative;
   overflow: hidden;
   transition: var(--transition-smooth);
+  /* link reset */
+  display: flex;
+  flex-direction: column;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
 }
 .service-card:hover {
-  border-color: var(--color-blush);
-  box-shadow: 0 20px 60px rgba(74,44,42,0.08);
+  border-color: var(--color-rose-gold);
+  box-shadow: 0 20px 60px rgba(74,44,42,0.12);
   transform: translateY(-6px);
+}
+.service-card:hover .service-card__book {
+  color: var(--color-rose-gold);
+  gap: 8px;
 }
 
 .service-card__icon-wrap {
@@ -514,6 +524,10 @@ a { color: inherit; text-decoration: none; }
   font-weight: 500;
   color: var(--color-mocha);
   margin-bottom: 12px;
+  transition: color 0.3s ease;
+}
+.service-card:hover h3 {
+  color: var(--color-rose-gold);
 }
 .service-card p {
   font-size: 0.88rem;
@@ -552,6 +566,28 @@ a { color: inherit; text-decoration: none; }
 
 .service-card--featured .service-card__pricing {
   border-top-color: rgba(74,44,42,0.15);
+}
+
+/* "Book this service →" label — appears at bottom of each card */
+.service-card__book {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: auto;
+  padding-top: 18px;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-mocha-light);
+  transition: color 0.3s ease, gap 0.3s ease;
+}
+.service-card--featured .service-card__book {
+  color: rgba(74,44,42,0.45);
+}
+.service-card--featured:hover .service-card__book {
+  color: var(--color-mocha);
 }
 
 .service-card__badge {
